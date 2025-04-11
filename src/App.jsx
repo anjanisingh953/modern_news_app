@@ -1,9 +1,11 @@
 import './App.css'
+import Header from './components/Header'
 function App() {
 
   return (
     <>
-      Welcome to Modern News App
+      <Header />
+      
     </>
   )
 }
