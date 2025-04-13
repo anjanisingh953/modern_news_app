@@ -1,16 +1,22 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import SingleCategoryCard from '../atomic/SingleCategoryCard';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Context } from '../../main';
+import Pagination from '../atomic/Pagination';
 
 
 const DetailPage = () => {
 
       let {finalData,category} =  useContext(Context);
+      const {pageCategoryName  } = useParams();
       const navigate = useNavigate();
       
-    const {pageCategoryName  } = useParams();
+          const [currentPage, setCurrentPage] = useState(1);
+          const [rowPerPage, setRowPerPage] = useState(5);
+          const indexOfLastItem = currentPage * rowPerPage;
+          const indexOfFirstItem = indexOfLastItem - rowPerPage;
+      
 
 
     useEffect(() => {
@@ -26,18 +32,20 @@ const DetailPage = () => {
 
     console.log("category" ,category)
 
-    let currentPageData = finalData[pageCategoryName];
-  
+    let currentPageData = finalData[pageCategoryName];    
+    const currentItems = currentPageData.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(currentPageData.length/rowPerPage)
+
 
 
     return (
-  
-        <div style={{width:'70%',backgroundColor:'#fff',marginTop:'30px', borderRadius:'5px',boxShadow:'4px 6px 5px black', padding:'15px',margin:'80px auto'}}>
+      <>
+        <div className="detailpage_main_div" >
     
-         <h2 style={{color:'#ce0c0c'}}>{pageCategoryName.toUpperCase()} <ArrowRightIcon /> </h2>
+         <h2 className="detailpage_category_name">{pageCategoryName.toUpperCase()} <ArrowRightIcon /> </h2>
     
     {
-      currentPageData.map((item) => (
+      currentItems && currentItems.map((item) => (
         
         <SingleCategoryCard publishedat={item.publishedAt} title={item.title} newsurl={item.url} content={item.content.split('[')[0]} imgurl={item.urlToImage} />
     
@@ -45,6 +53,12 @@ const DetailPage = () => {
       
       }
        </div>
+       {
+
+         currentItems.length>0?<Pagination  setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}  />:(<h2 className="not_found_text">No results found</h2>) 
+       }
+
+       </>
       )
 
 

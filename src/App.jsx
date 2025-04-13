@@ -5,6 +5,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import Home from './components/pages/Home'
 import DetailPage from './components/pages/DetailPage'
 import PageNotFound from './components/pages/PageNotFound'
+import SearchPage from './components/pages/SearchPage'
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
           <Routes>
           <Route exact name="home" path='/' element={<Home />}></Route>
           <Route exact name="home" path='/home' element={<Home />}></Route>
+          <Route exact path='/details/search' element={<SearchPage />}></Route>
           <Route exact  path='/details/:pageCategoryName' element={<DetailPage />}></Route>
           <Route  path='/404' element={<PageNotFound />}></Route>             
           <Route  path='/*' element={<PageNotFound />}></Route>             

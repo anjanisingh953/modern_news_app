@@ -1,16 +1,29 @@
 import { Search } from '@mui/icons-material'
 import { AppBar, Box, Button, List, ListItem, TextField, Toolbar, Typography } from '@mui/material'
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { Context } from '../../main'
 const Header = () => {
-  return (
+    const navigate = useNavigate();
+    const [inputData,setInputData] = useState('');
+    let {searchQuery,setSearchQuery} =  useContext(Context);
+    const handlleSubmit = ()=>{
+        if(inputData){
+            setSearchQuery(inputData)
+            setInputData('')
+            navigate('/details/search')
+        }
+ 
+    }
+
+  return (  
     <>
-              <Box sx={{ flexGrow: 1 }}>
+              <Box sx={{ flexGrow: 1,   position: 'sticky',  top: '0px',  }}>
                 <AppBar position="static">
                     <Toolbar sx={{ backgroundColor: '#ce0c0c', display: 'flex', justifyContent: 'space-around' }}>
                         <Box>
                             <Typography variant="h6" component="div" sx={{ fontSize: '30px', fontStyle: 'italic', fontFamily: "Rock Salt", color: 'black', fontWeight: 'bolder' }}>
-                                Modern News
+                            <NavLink className={"listli"} to={"/home"} style={{color:'#000'}}>  Modern News </NavLink>
                             </Typography>
                         </Box>
                         <Box sx={{ fontSize: '20px' }}>
@@ -25,8 +38,8 @@ const Header = () => {
                             </List>
                         </Box>
                         <Box >
-                            <TextField id="search_box" sx={{ background: '#fff', borderBottom: 'none !important' }} variant='standard' placeholder='Search...' />
-                            <Button variant='contained' sx={{ height: '32px', color: '#fff', background: '#000', marginLeft: '0px' }} >Search</Button>
+                            <TextField id="search_box" autoComplete='off' value={inputData} onChange={(e)=>setInputData(e.target.value)} sx={{ background: '#fff', borderBottom: 'none !important' }} variant='standard' placeholder='Search...' />
+                            <Button variant='contained' onClick={handlleSubmit} sx={{ height: '32px', color: '#fff', background: '#000', marginLeft: '0px' }} >Search</Button>
                         </Box>
                     </Toolbar>
                 </AppBar>

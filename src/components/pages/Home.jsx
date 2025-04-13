@@ -8,7 +8,7 @@ const Home = () => {
     const {finalData} =  useContext(Context);
   return (
     
-    <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-evenly', marginTop:'35px',marginBottom:'110px'}}>
+    <div className="home_main_div" >
 
 {
   Object.entries(finalData).map(([category, articles]) => (
