@@ -9,6 +9,11 @@
 #search_box{
   text-indent: 15px;
 }
+.active{
+  color: black !important;
+  font-weight: bolder;
+  font-style: italic;
+}
 
 #search_box:hover{
   border-bottom: none;
