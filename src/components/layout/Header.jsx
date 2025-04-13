@@ -1,6 +1,7 @@
 import { Search } from '@mui/icons-material'
 import { AppBar, Box, Button, List, ListItem, TextField, Toolbar, Typography } from '@mui/material'
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 const Header = () => {
   return (
     <>
@@ -14,13 +15,13 @@ const Header = () => {
                         </Box>
                         <Box sx={{ fontSize: '20px' }}>
                             <List sx={{ display: 'flex' }}>
-                                <ListItem>Business</ListItem>
-                                <ListItem>Entertainment</ListItem>
-                                <ListItem>General</ListItem>
-                                <ListItem>Health</ListItem>
-                                <ListItem>Science</ListItem>
-                                <ListItem>Sports</ListItem>
-                                <ListItem>Technology</ListItem>
+                            <ListItem><NavLink className={"listli"} to={"/home"}>Home</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/general"}>General</NavLink></ListItem>
+                            <ListItem><NavLink  className={"listli"} to={"/entertainment"}>Entertainment</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/health"}>Health</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/business"}>Business</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/sports"}>Sports</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/technology"}>Technology</NavLink></ListItem>
                             </List>
                         </Box>
                         <Box >
