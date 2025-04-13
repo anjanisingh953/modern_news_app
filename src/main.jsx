@@ -18,8 +18,8 @@ const AppWrapper = () => {
   const getData = async (category = 'science', country = 'us') => {
     try {
       // let response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&46717fb6678441e5927ed81db812ee76apiKey=f463419c4e4c4ebd96549c95688e979b&pageSize=10`)
-      let response = await axios.get(`https://newsapi.org/v2/top-headlines?category=${category}&apiKey=2d55f494fe674381af5e990d5d995b6e&pageSize=100`)
-      let data = response.data.articles.filter((item)=>item.urlToImage).map((item) => Object.assign({ ...item, category }))
+      let response = await axios.get(`https://newsapi.org/v2/top-headlines?category=${category}&apiKey=46717fb6678441e5927ed81db812ee76&pageSize=100`)
+      let data = response.data.articles.filter((item)=>item.urlToImage&&item.content).map((item) => Object.assign({ ...item, category }))
       // data = data.slice(0,5); 
       setData(prevData => ({
         ...prevData,
@@ -48,7 +48,7 @@ const AppWrapper = () => {
   // const user = { fname: "Anjani", lname: "Singh" };
   // const [loading, setLoading] = useState(false);
   return (
-    < Context.Provider value={{ finalData, getData }}>
+    < Context.Provider value={{ finalData, getData,category }}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

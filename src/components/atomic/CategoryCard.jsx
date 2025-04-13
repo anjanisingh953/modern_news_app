@@ -1,6 +1,7 @@
 import React from 'react'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import { TimeConversion } from '../../utils/TimeConversion';
 const CategoryCard = ({category,articles}) => {
   
   return (
@@ -10,11 +11,18 @@ const CategoryCard = ({category,articles}) => {
        {Array.isArray(articles) && articles.length > 0 ? (
         articles.map((article, idx) => (
           <div key={idx}>
-            <hr />  
+            <hr style={{marginTop:'10px'}} />  
             <div style={{display:'flex',padding:'5px 0'}}>
-            <h3>{article.title}</h3>
+              <div style={{paddingRight:'5px'}}>
+              <h3>{article.title}</h3>
+              <br />
+              <p style={{color:'#ce0c0c'}}>{TimeConversion(article.publishedAt)}</p>
+              </div>
+              <div> 
+
             <img src={article.urlToImage} alt="news" width="80px" height="80px" />
-             </div>   
+             </div> 
+             </div>  
           
           </div>
         ))

@@ -16,12 +16,12 @@ const Header = () => {
                         <Box sx={{ fontSize: '20px' }}>
                             <List sx={{ display: 'flex' }}>
                             <ListItem><NavLink className={"listli"} to={"/home"}>Home</NavLink></ListItem>
-                                <ListItem><NavLink className={"listli"} to={"/general"}>General</NavLink></ListItem>
-                            <ListItem><NavLink  className={"listli"} to={"/entertainment"}>Entertainment</NavLink></ListItem>
-                                <ListItem><NavLink className={"listli"} to={"/health"}>Health</NavLink></ListItem>
-                                <ListItem><NavLink className={"listli"} to={"/business"}>Business</NavLink></ListItem>
-                                <ListItem><NavLink className={"listli"} to={"/sports"}>Sports</NavLink></ListItem>
-                                <ListItem><NavLink className={"listli"} to={"/technology"}>Technology</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/details/general"}>General</NavLink></ListItem>
+                            <ListItem><NavLink  className={"listli"} to={"/details/entertainment"}>Entertainment</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/details/health"}>Health</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/details/business"}>Business</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/details/sports"}>Sports</NavLink></ListItem>
+                                <ListItem><NavLink className={"listli"} to={"/details/technology"}>Technology</NavLink></ListItem>
                             </List>
                         </Box>
                         <Box >
