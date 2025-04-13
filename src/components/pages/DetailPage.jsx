@@ -33,8 +33,8 @@ const DetailPage = () => {
     console.log("category" ,category)
 
     let currentPageData = finalData[pageCategoryName];    
-    const currentItems = currentPageData.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(currentPageData.length/rowPerPage)
+    const currentItems = currentPageData && currentPageData.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = currentPageData && Math.ceil(currentPageData.length/rowPerPage)
 
 
 
@@ -55,7 +55,7 @@ const DetailPage = () => {
        </div>
        {
 
-         currentItems.length>0?<Pagination  setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}  />:(<h2 className="not_found_text">No results found</h2>) 
+        currentPageData &&<Pagination  setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}  /> 
        }
 
        </>

@@ -78,7 +78,10 @@ button.activePage{
 /* common css START*/
 
 .not_found_text{
-  text-align: center;
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+  height: 100vh;
 }
 .hr_line{
   margin-top:10px;

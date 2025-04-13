@@ -8,29 +8,31 @@ import { homeApiData } from './utils/homeApiData.jsx';
 
 const Context = createContext();
 const AppWrapper = () => {
+  const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
   const category = ['general','entertainment','health','business', 'sports', 'technology'];
   const [searchQuery,setSearchQuery] = useState('Modi');
-  const [finalData, setData] = useState(homeApiData) 
+  const [finalData, setData] = useState(homeApiData)   //for static data
+
+  // dynamic data fetch code start
   // const [finalData, setData] = useState({  
   //   'general': [], 'entertainment':[], 'health': [],
   //   'business':[], 'sports':[], 'technology':[]
-  // })
+  // })   //for dynamic data
 
-  // const getData = async (category = 'science', country = 'us') => {
+  // const getData = async (category = 'science') => {
   //   try {
-  //     // let response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}0f3c9a3821974443b4bfd052b940a1c9&46717fb6678441e5927ed81db812ee76apiKey=f463419c4e4c4ebd96549c95688e979b&pageSize=10`)
-  //     let response = await axios.get(`https://newsapi.org/v2/top-headlines?category=${category}&apiKey=0f3c9a3821974443b4bfd052b940a1c9&pageSize=100`)
+  //     let response = await axios.get(`https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${API_KEY}&pageSize=100`)
   //     let data = response.data.articles.filter((item)=>item.urlToImage&&item.content).map((item) => Object.assign({ ...item, category }))
   //     // data = data.slice(0,5); 
   //     setData(prevData => ({
   //       ...prevData,
   //       [category]: data
   //     }));
-  //     console.log("finalDataDGAGGDGDGGDG >>>>>",finalData)
+  //     // console.log("FinalData >>>>>",finalData);
 
   //   } catch (err) {
-  //     return err;
+  //     console.log('Main Page ERROR >>>',err);
   //   }
 
 
@@ -39,12 +41,12 @@ const AppWrapper = () => {
   
 
   // useEffect(() => {
-
   //   category.forEach(val=>{
   //     getData(val);
   //   })
-
   // }, [])
+
+  // dynamic data fetch code end
 
 
   return (
