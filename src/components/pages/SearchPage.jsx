@@ -12,8 +12,8 @@ const SearchPage = () => {
 
     let {searchQuery} =  useContext(Context);
     let pageCategoryName = `Search result found for`;
-    const [searchArr, setSearchArr] = useState(searchApiData);  //for static data
-  //  const [searchArr, setSearchArr] = useState([]);  //for dynamic data
+    // const [searchArr, setSearchArr] = useState(searchApiData);  //for static data
+   const [searchArr, setSearchArr] = useState([]);  //for dynamic data
 
     const [currentPage, setCurrentPage] = useState(1);
     const [rowPerPage, setRowPerPage] = useState(10);
@@ -27,22 +27,22 @@ const SearchPage = () => {
 
 
 //fetch from the api code start
-    // const fetchData=  async(searchparameter) => {
-    //     try {
-    //         let response = await axios.get(`https://newsapi.org/v2/everything?q=${searchparameter}&language=en&apiKey=${API_KEY}`)
-    //         let data = response.data.articles
-    //         setSearchArr(data)
-    //         console.log("SEARCH DATA RESULT >>>",data)
+    const fetchData=  async(searchparameter) => {
+        try {
+            let response = await axios.get(`https://newsapi.org/v2/everything?q=${searchparameter}&language=en&apiKey=${API_KEY}`)
+            let data = response.data.articles
+            setSearchArr(data)
+            console.log("SEARCH DATA RESULT >>>",data)
 
-    //       } catch (err) {
-    //         console.log("errrrrr",err)
-    //       }
+          } catch (err) {
+            console.log("errrrrr",err)
+          }
     
-    //   };
+      };
 
-    //       useEffect(() => {
-    //         fetchData(searchQuery);            
-    //      }, [searchQuery]);
+          useEffect(() => {
+            fetchData(searchQuery);            
+         }, [searchQuery]);
 
 //fetch from the api code end
 

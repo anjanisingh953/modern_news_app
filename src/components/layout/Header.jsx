@@ -38,7 +38,18 @@ const Header = () => {
                             </List>
                         </Box>
                         <Box >
-                            <TextField id="search_box" autoComplete='off' value={inputData} onChange={(e)=>setInputData(e.target.value)} sx={{ background: '#fff', borderBottom: 'none !important' }} variant='standard' placeholder='Search...' />
+                            <TextField id="search_box"
+                             autoComplete='off'
+                             value={inputData}
+                             onChange={(e)=>setInputData(e.target.value)}
+                             onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    handlleSubmit()
+                                }
+                              }}
+                             sx={{ background: '#fff', borderBottom: 'none !important' }}
+                             variant='standard' placeholder='Search...' 
+                            />
                             <Button variant='contained' onClick={handlleSubmit} sx={{ height: '32px', color: '#fff', background: '#000', marginLeft: '0px' }} >Search</Button>
                         </Box>
                     </Toolbar>
