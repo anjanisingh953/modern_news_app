@@ -12,8 +12,8 @@ const SearchPage = () => {
 
     let {searchQuery} =  useContext(Context);
     let pageCategoryName = `Search result found for`;
-    // const [searchArr, setSearchArr] = useState(searchApiData);  //for static data
-   const [searchArr, setSearchArr] = useState([]);  //for dynamic data
+    const [searchArr, setSearchArr] = useState(searchApiData);  //for static data
+  //  const [searchArr, setSearchArr] = useState([]);  //for dynamic data
 
     const [currentPage, setCurrentPage] = useState(1);
     const [rowPerPage, setRowPerPage] = useState(10);
@@ -24,27 +24,27 @@ const SearchPage = () => {
        
 
 
+    // console.log('SEARCh Page is render')
 
+// //fetch from the api code start
+//     const fetchData=  async(searchparameter) => {
+//         try {
+//             let response = await axios.get(`https://newsapi.org/v2/everything?q=${searchparameter}&language=en&apiKey=${API_KEY}`)
+//             let data = response.data.articles
+//             setSearchArr(data)
+//             console.log("SEARCH DATA RESULT >>>",data)
 
-//fetch from the api code start
-    const fetchData=  async(searchparameter) => {
-        try {
-            let response = await axios.get(`https://newsapi.org/v2/everything?q=${searchparameter}&language=en&apiKey=${API_KEY}`)
-            let data = response.data.articles
-            setSearchArr(data)
-            console.log("SEARCH DATA RESULT >>>",data)
-
-          } catch (err) {
-            console.log("errrrrr",err)
-          }
+//           } catch (err) {
+//             console.log("errrrrr",err)
+//           }
     
-      };
+//       };
 
-          useEffect(() => {
-            fetchData(searchQuery);            
-         }, [searchQuery]);
+//           useEffect(() => {
+//             fetchData(searchQuery);            
+//          }, [searchQuery]);
 
-//fetch from the api code end
+// //fetch from the api code end
 
 
 
@@ -55,9 +55,9 @@ const SearchPage = () => {
              <h2 className="searchpage_category_name">{pageCategoryName} - {searchQuery} <ArrowRightIcon /> </h2>
         
         {
-          currentItems && currentItems.map((item) => (
+          currentItems && currentItems.map((item,ind) => (
             
-            <SingleCategoryCard publishedat={item.publishedAt} title={item.title} newsurl={item.url} content={item.content.split('[')[0]} imgurl={item.urlToImage} />
+            <SingleCategoryCard key={ind} publishedat={item.publishedAt} title={item.title} newsurl={item.url} content={item.content.split('[')[0]} imgurl={item.urlToImage} />
         
           ))
           

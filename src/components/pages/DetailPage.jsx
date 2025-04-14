@@ -36,7 +36,7 @@ const DetailPage = () => {
     const currentItems = currentPageData && currentPageData.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = currentPageData && Math.ceil(currentPageData.length/rowPerPage)
 
-
+    // console.log('Detail Page is render')
 
     return (
       <>
@@ -45,9 +45,9 @@ const DetailPage = () => {
          <h2 className="detailpage_category_name">{pageCategoryName.toUpperCase()} <ArrowRightIcon /> </h2>
     
     {
-      currentItems && currentItems.map((item) => (
+      currentItems && currentItems.map((item,ind) => (
         
-        <SingleCategoryCard publishedat={item.publishedAt} title={item.title} newsurl={item.url} content={item.content.split('[')[0]} imgurl={item.urlToImage} />
+        <SingleCategoryCard key={ind} publishedat={item.publishedAt} title={item.title} newsurl={item.url} content={item.content.split('[')[0]} imgurl={item.urlToImage} />
     
       ))
       
@@ -55,7 +55,7 @@ const DetailPage = () => {
        </div>
        {
 
-        currentPageData &&<Pagination  setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}  /> 
+        currentPageData.length>0 &&<Pagination  setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}  /> 
        }
 
        </>

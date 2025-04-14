@@ -6,13 +6,14 @@ import { Context } from '../../main';
 
 const Home = () => {
     const {finalData} =  useContext(Context);
+    // console.log('HOme Page is render')
   return (
     
     <div className="home_main_div" >
 
 {
-  Object.entries(finalData).map(([category, articles]) => (
-    <CategoryCard category={category} articles={articles.slice(0,3)} />
+  Object.entries(finalData).map(([category, articles],ind) => (
+    <CategoryCard key={ind} category={category} articles={articles.slice(0,3)} />
 
   ))
   

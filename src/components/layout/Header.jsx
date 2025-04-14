@@ -28,7 +28,7 @@ const Header = () => {
                         </Box>
                         <Box sx={{ fontSize: '20px' }}>
                             <List sx={{ display: 'flex' }}>
-                            <ListItem><NavLink activeClassName="active" className={"listli"} to={"/home"}>Home</NavLink></ListItem>
+                            <ListItem><NavLink activeclassname="active" className={"listli"} to={"/home"}>Home</NavLink></ListItem>
                                 <ListItem><NavLink className={"listli"} to={"/details/general"}>General</NavLink></ListItem>
                             <ListItem><NavLink  className={"listli"} to={"/details/entertainment"}>Entertainment</NavLink></ListItem>
                                 <ListItem><NavLink className={"listli"} to={"/details/health"}>Health</NavLink></ListItem>

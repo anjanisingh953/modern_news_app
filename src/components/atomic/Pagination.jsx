@@ -20,7 +20,7 @@ const Pagination = ({setCurrentPage,currentPage,totalPages}) => {
             <button onClick={handlePrev} disabled={currentPage === 1}>Prev</button>
             {
                 Array.from({length:totalPages},(_,index)=>(
-                    <button className={(currentPage == index+1)?'activePage':''} onClick={()=>handlePageClick(index+1)}>{index+1}</button>
+                    <button key={index} className={(currentPage == index+1)?'activePage':''} onClick={()=>handlePageClick(index+1)}>{index+1}</button>
                 ))
             }
             <button onClick={handleNext} disabled={currentPage == totalPages}>Next</button>
